@@ -152,6 +152,8 @@
 
         <model:model model="additionalCode" resource="model/additionalCode.xml"/>
 
+        <model:model model="purchase" resource="model/purchase.xml"/>
+
         <model:dictionary name="categories"/>
         <model:dictionary name="posts"/>
         <model:dictionary name="reasonTypeOfChangingOrderState"/>
@@ -165,6 +167,8 @@
 
         <menu:menu-item-url name="home" category="home"
                             url="/dashboard.html"/>
+
+        <menu:menu-item name="purchases" category="basic" view="purchasesList"/>
 
         <menu:menu-item name="companies" category="basic"
                         view="companiesList" defaultAuthorizationRole="ROLE_COMPANY"/>
@@ -205,6 +209,7 @@
         <menu:menu-item name="factories" category="companyStructure"
                         view="factoriesList" defaultAuthorizationRole="ROLE_COMPANY_STRUCTURE"/>
 
+
         <view:view resource="view/reportColumnWidthDetails.xml"/>
         <view:view resource="view/companiesList.xml"/>
         <view:view resource="view/companyDetails.xml"/>
@@ -241,6 +246,9 @@
 
         <view:view resource="view/subassembliesList.xml"/>
         <view:view resource="view/subassemblyDetails.xml"/>
+
+        <view:view resource="view/purchasesList.xml"/>
+        <view:view resource="view/purchaseDetails.xml"/>
 
         <view:view-tab resource="view/tabExtensions/userDetailsStaffTab.xml"/>
 

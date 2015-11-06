@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schema.qcadoo.org/view"
+      xsi:schemaLocation="http://schema.qcadoo.org/view http://schema.qcadoo.org/view.xsd"
+      name="purchasesList"
+      modelName="purchase"
+      menuAccessible="true">
+
+
+    <component type="window" name="window">
+
+        <ribbon>
+            <template name="standardGridTemplate" excludeItems="actions.copy"/>
+            <group name="statistics">
+                <smallButton name="calculateAveragePrice">
+                    <script>
+                        <![CDATA[
+                            this.addOnChangeListener({
+                                onClick: function() {
+                                    #{grid}.performEvent('calculateAveragePrice', []);
+                                }
+                            });
+                        ]]>
+                    </script>
+                </smallButton>
+            </group>
+        </ribbon>
+
+
+        <component type="grid" name="purchases" reference="grid">
+            <option type="column" name="product" fields="product" expression="#product['name']" link="true"/>
+            <option type="column" name="quantity" fields="quantity" />
+            <option type="column" name="price" fields="price"/>
+            <option type="column" name="date" fields="date"/>
+
+            <option type="order" column="product" direction="asc"/>
+            <option type="orderable" value="product,quantity,price,date" />
+
+            <option type="correspondingView" value="basic/purchaseDetails" />
+            <option type="correspondingComponent" value="form" />
+
+            <option type="fullscreen" value="true" />
+            <option type="multiselect" value="true" />
+
+            <listener event="calculateAveragePrice"
+                      class="com.qcadoo.mes.basic.listeners.PurchasesListListeners" method="calculateAveragePrice"/>
+        </component>
+
+        <option type="fixedHeight" value="true" />
+        <option type="header" value="false" />
+    </component>
+
+</view>

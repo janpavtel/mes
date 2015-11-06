@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="purchase" activable="true"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schema.qcadoo.org/model"
+       xsi:schemaLocation="http://schema.qcadoo.org/model http://schema.qcadoo.org/model.xsd">
+
+    <fields>
+        <belongsTo name="product" plugin="basic" model="product" required="true"/>
+
+        <decimal name="quantity" required="true">
+            <validatesRange from="0" exclusively="true"/>
+        </decimal>
+
+        <decimal name="price" required="true">
+            <validatesRange from="0" exclusively="true"/>
+        </decimal>
+
+        <datetime name="date" required="true"/>
+    </fields>
+
+    <hooks>
+        <validatesWith class="com.qcadoo.mes.basic.validators.PurchaseValidators"
+                       method="validatePurchaseUniqueness"/>
+    </hooks>
+</model>

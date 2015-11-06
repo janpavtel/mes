@@ -44,6 +44,8 @@
 
         <belongsTo name="technologyPrototype" model="technology"/>
 
+        <!--<belongsTo name="division" model="division" plugin="basic"/>-->
+
         <boolean name="externalSynchronized" default="true" copyable="false"/>
 
         <boolean name="master" default="false" copyable="false"/>
